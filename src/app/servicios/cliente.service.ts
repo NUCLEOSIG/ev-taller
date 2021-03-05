@@ -12,10 +12,10 @@ export class ClienteService {
   }
 
   getCliente():Observable<any>{
-    return this.http.get(`/taller/clientes`);
+    return this.http.get(`/api/taller/clientes`);
   }
 
   crearCliente(cliente:Object):Observable<any>{
-    return this.http.post(`/taller/clientes`,cliente);
+    return this.http.post(`/api/taller/clientes`,cliente);
   }
 }

@@ -1,98 +1,160 @@
 <div class="main-content">
   <div class="container-fluid">
-    <div class="card">
+    <div class="row">
+    <div class="card col-lg-6 col-md-12">
         <div class="card-header card-header-danger">
-            <h4 class="card-title">Material Dashboard Heading</h4>
-            <p class="card-category">Created using Roboto Font Family</p>
+            <h4 class="card-title">AGREGANDO EQUIPO A CLIENTE</h4>
+            <p class="card-category">AE FD</p>
         </div>
-        <div class="card-body">
-            <div id="typography">
-                <div class="card-title">
-                    <h2>Typography</h2>
-                </div>
-                <div class="row">
-                    <div class="tim-typo">
-                        <h1>
-                            <span class="tim-note">Header 1</span>The Life of Material Dashboard </h1>
+        <div class="card-body ">
+
+            <div class="div card">
+                <div class="card-body ">
+                    <div class="card-title">
+                        Registrar nuevo Equipo de cliente
                     </div>
-                    <div class="tim-typo">
-                        <h2>
-                            <span class="tim-note">Header 2</span>The Life of Material Dashboard</h2>
+                    <div class="form-group mt-2">
+                        <input type="text" [(ngModel)]="selectedEquipo.tipo_de_equipo" class="form-control" placeholder="Ingresar el tipo de equipo">
                     </div>
-                    <div class="tim-typo">
-                        <h3>
-                            <span class="tim-note">Header 3</span>The Life of Material Dashboard</h3>
+                    <div class="form-group mt-2">
+                        <input type="text" [(ngModel)]="selectedEquipo.descripcion" class="form-control" placeholder="Ingresar la descripcion">
                     </div>
-                    <div class="tim-typo">
-                        <h4>
-                            <span class="tim-note">Header 4</span>The Life of Material Dashboard</h4>
+                    <div class="form-group mt-2">
+                        <input type="text" [(ngModel)]="selectedEquipo.accesorios" class="form-control" placeholder="Ingresar los accesorios">
                     </div>
-                    <div class="tim-typo">
-                        <h5>
-                            <span class="tim-note">Header 5</span>The Life of Material Dashboard</h5>
+                    <div class="form-group mt-2">
+                        <select [(ngModel)]="selectedEquipo.id_cliente" class="form-control" >
+                            <option [value]="cliente.id_cliente" *ngFor="let cliente of clienteArray"> {{cliente.id_cliente}} {{cliente.nombre}} {{cliente.rfc}}</option>
+                        </select>
                     </div>
-                    <div class="tim-typo">
-                        <h6>
-                            <span class="tim-note">Header 6</span>The Life of Material Dashboard</h6>
-                    </div>
-                    <div class="tim-typo">
-                        <p>
-                            <span class="tim-note">Paragraph</span>
-                            I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at.</p>
-                    </div>
-                    <div class="tim-typo">
-                        <span class="tim-note">Quote</span>
-                        <blockquote class="blockquote">
-                            <p>
-                                I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at.
-                            </p>
-                            <small>
-                                Kanye West, Musician
-                            </small>
-                        </blockquote>
-                    </div>
-                    <div class="tim-typo">
-                        <span class="tim-note">Muted Text</span>
-                        <p class="text-muted">
-                            I will be the leader of a company that ends up being worth billions of dollars, because I got the answers...
-                        </p>
-                    </div>
-                    <div class="tim-typo">
-                        <span class="tim-note">Primary Text</span>
-                        <p class="text-primary">
-                            I will be the leader of a company that ends up being worth billions of dollars, because I got the answers... </p>
-                    </div>
-                    <div class="tim-typo">
-                        <span class="tim-note">Info Text</span>
-                        <p class="text-info">
-                            I will be the leader of a company that ends up being worth billions of dollars, because I got the answers... </p>
-                    </div>
-                    <div class="tim-typo">
-                        <span class="tim-note">Success Text</span>
-                        <p class="text-success">
-                            I will be the leader of a company that ends up being worth billions of dollars, because I got the answers... </p>
-                    </div>
-                    <div class="tim-typo">
-                        <span class="tim-note">Warning Text</span>
-                        <p class="text-warning">
-                            I will be the leader of a company that ends up being worth billions of dollars, because I got the answers...
-                        </p>
-                    </div>
-                    <div class="tim-typo">
-                        <span class="tim-note">Danger Text</span>
-                        <p class="text-danger">
-                            I will be the leader of a company that ends up being worth billions of dollars, because I got the answers... </p>
-                    </div>
-                    <div class="tim-typo">
-                        <h2>
-                            <span class="tim-note">Small Tag</span>
-                            Header with small subtitle
-                            <br>
-                            <small>Use "small" tag for the headers</small>
-                        </h2>
+                    
+                    
+                    <div class="form-group">
+                        <button class="btn btn-info mt-2" (click)="guardarEquipo()">
+                            Guardar
+                        </button>
+                        <button class="btn btn-danger mt-2" (click)="nuevoEquipo()">
+                            Nuevo
+                        </button>
                     </div>
                 </div>
             </div>
+
+            <div class="card">
+                <div class="card-header card-header-danger">
+                    <h4 class="card-title">EQUIPOS</h4>
+                    <p class="card-category">EQUIPOS EN SERVICIO</p>
+                </div>
+                <div class="card-body table-responsive">
+                    <table class="table table-hover">
+                        <thead class="text-danger">
+                            <th>ID</th>
+                            <th>EQUIPO</th>
+                            <th>FALLA</th>
+                            <th>ACCESORIOS</th>
+                            <th>ID DE CLIENTE</th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor = "let equipo of equiposArray">
+                                <td>{{equipo.id_equipo}}</td>
+                                <td>{{equipo.tipo_de_equipo}}</td>
+                                <td>{{equipo.descripcion}}</td>
+                                <td>{{equipo.accesorios}}</td>
+                                <td>{{equipo.id_cliente}}</td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
         </div>
     </div>
+    <div class="card col-lg-6 col-md-12">
+        <div class="card-header card-header-primary">
+            <h4 class="card-title">AGREGANDO SERVICIO A CLIENTE</h4>
+            <p class="card-category">AE FD</p>
+        </div>
+        <div class="card-body ">
+
+            <div class="div card">
+                <div class="card-body ">
+                    <div class="card-title">
+                        Registrar nuevo Servicio de cliente
+                    </div>
+                    <div class="form-group mt-2">
+                        <input type="date" [(ngModel)]="selectedServicio.fe_ingreso" class="form-control" placeholder="Fecha de Ingreso">
+                    </div>
+                    <div class="form-group mt-2">
+                        <input type="date" [(ngModel)]="selectedServicio.fe_salida" class="form-control" placeholder="Fecha de Salida">
+                    </div>
+                    <div class="form-group mt-2">
+                        <input type="text" [(ngModel)]="selectedServicio.diagnostico" class="form-control" placeholder="Reparacion realizada">
+                    </div>
+                    <div class="form-group mt-2">
+                        <input type="number" [(ngModel)]="selectedServicio.costo" class="form-control" placeholder="Ingresar el costo">
+                    </div>
+                    <div class="form-group mt-2">
+                        <select [(ngModel)]="selectedServicio.id_equipo" class="form-control" >
+                            <option [value]="equipo.id_equipo" *ngFor="let equipo of equiposArray"> {{equipo.id_equipo}} {{equipo.tipo_de_equipo}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group mt-2">
+                        <select [(ngModel)]="selectedServicio.id_cliente" class="form-control" >
+                            <option [value]="cliente.id_cliente" *ngFor="let cliente of clienteArray"> {{cliente.id_cliente}} {{cliente.nombre}} {{cliente.rfc}}</option>
+                        </select>
+                    </div>
+                     
+                    
+                    <div class="form-group">
+                        <button class="btn btn-info mt-2" (click)="guardarServicio()">
+                            Guardar
+                        </button>
+                        <button class="btn btn-danger mt-2" (click)="nuevoServicio()">
+                            Limpiar
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title">SERVICIOS</h4>
+                    <p class="card-category">SERVICIOS EN ACTIVOS</p>
+                </div>
+                <div class="card-body table-responsive">
+                    <table class="table table-hover">
+                        <thead class="text-danger">
+                            <th>ID</th>
+                            <th>INGRESO</th>
+                            <th>SALIDA</th>
+                            <th>DIAGNOSTICO</th>
+                            <th>COSTO</th>
+                            <th>ID EQUIPO</th>
+                            <th>ID CLIENTE</th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor = "let servicio of serviciosArray">
+                                <td>{{servicio.id_servicio}}</td>
+                                <td>{{servicio.fe_ingreso}}</td>
+                                <td>{{servicio.fe_salida}}</td>
+                                <td>{{servicio.diagnostico}}</td>
+                                <td>{{servicio.costo}}</td>
+                                <td>{{servicio.id_equipo}}</td>
+                                <td>{{servicio.id_cliente}}</td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    </div>
+  </div>
+  
+    
 </div>

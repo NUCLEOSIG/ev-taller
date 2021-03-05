@@ -15,7 +15,7 @@ export class DashboardComponent implements OnInit {
   tecnicoArray:Tecnico[] = [];
   clienteArray:Cliente[] = [];
 
-
+ 
   constructor(private tecnicoService:TecnicoService, private clienteService:ClienteService) { }
   startAnimationForLineChart(chart){
       let seq: any, delays: any, durations: any;

@@ -5,19 +5,19 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class TecnicoService {
+export class VentasService {
 
-  
+   
   constructor(private http:HttpClient) { 
 
   }
 
-  getTecnico():Observable<any>{
-    return this.http.get(`/api/taller/tecnicos`);
+  getVenta():Observable<any>{
+    return this.http.get(`/api/taller/ventas`);
   }
 
-  crearTecnico(tecnico:Object):Observable<any>{
-    return this.http.post(`/api/taller/tecnicos`,tecnico);
+  crearVenta(ventas:Object):Observable<any>{
+    return this.http.post(`/api/taller/ventas`,ventas);
   }
 
 }
